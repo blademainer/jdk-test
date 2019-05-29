@@ -3,7 +3,7 @@
 script_dir="$(dirname $0)"
 
 docker volume create --name maven-repo
-docker run --rm --name maven-jdk-test -it -v maven-repo:/root/.m2 -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven mvn install
+docker run --rm --name maven-jdk-test -it -v maven-repo:/root/.m2 -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven mvn clean install
 cp ${script_dir}/Dockerfile ${script_dir}/target
 cd ${script_dir}/target
 cp jdk-test*.jar app.jar
